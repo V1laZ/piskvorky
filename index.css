@@ -1,0 +1,237 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    max-width: 800px;
+    width: 90%;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.current-player {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+#current-player {
+    color: #e74c3c;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.game-status {
+    font-weight: 600;
+    color: #27ae60;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 2px;
+    background: #34495e;
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    aspect-ratio: 1;
+    overflow: hidden;
+}
+
+.cell {
+    background: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+}
+
+.cell:hover:not(.occupied) {
+    background: #ecf0f1;
+    box-shadow: inset 0 0 10px rgba(52, 152, 219, 0.3);
+}
+
+.cell.occupied {
+    cursor: not-allowed;
+}
+
+.cell.x {
+    color: #e74c3c;
+    background: #ffeaa7;
+}
+
+.cell.o {
+    color: #3498db;
+    background: #a8e6cf;
+}
+
+.cell.winning {
+    background: #f39c12 !important;
+    color: white !important;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { 
+        box-shadow: 0 0 5px #f39c12;
+        opacity: 1;
+    }
+    50% { 
+        box-shadow: 0 0 20px #f39c12, 0 0 30px #f39c12;
+        opacity: 0.8;
+    }
+    100% { 
+        box-shadow: 0 0 5px #f39c12;
+        opacity: 1;
+    }
+}
+
+.controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 120px;
+}
+
+.btn-primary {
+    background: #3498db;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+.btn-secondary {
+    background: #95a5a6;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #7f8c8d;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(149, 165, 166, 0.3);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.move-counter {
+    text-align: center;
+    font-weight: 600;
+    color: #7f8c8d;
+    font-size: 1rem;
+}
+
+#move-count {
+    color: #2c3e50;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+        width: 95%;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .game-info {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+    
+    .game-board {
+        max-width: 100%;
+    }
+    
+    .cell {
+        font-size: 1rem;
+        min-height: 30px;
+    }
+    
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 200px;
+    }
+}
